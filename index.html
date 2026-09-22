@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#100b2f">
+  <meta name="description" content="A vibrant offline pixel arcade built for two players sharing one phone.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pixel Arcade">
+  <title>Nora &amp; Reagan's Pixel Arcade</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div id="app" class="app-frame">
+    <section class="welcome-screen" id="welcomeScreen" aria-labelledby="welcomeTitle">
+      <div class="sky-orb orb-one"></div><div class="sky-orb orb-two"></div>
+      <div class="star-field" aria-hidden="true"></div>
+      <div class="brand-mark" aria-hidden="true"><i></i><span></span><i></i></div>
+      <p class="eyebrow">Two players · One pocket universe</p>
+      <h1 id="welcomeTitle"><span>Pixel</span> Arcade</h1>
+      <p class="welcome-copy">Team up, face off, and turn every round into a tiny legend.</p>
+      <button class="primary-button welcome-button" id="enterArcade" type="button">Enter the arcade <span aria-hidden="true">→</span></button>
+      <p class="player-note">Built for Player 1 + Player 2</p>
+    </section>
+
+    <div class="shell" id="arcadeShell" hidden>
+      <header class="topbar">
+        <button class="logo-button" data-view="home" aria-label="Go home">
+          <span class="mini-logo" aria-hidden="true">✦</span>
+          <span>PIXEL<br><b>ARCADE</b></span>
+        </button>
+        <div class="top-actions">
+          <button class="icon-button" id="installButton" aria-label="Install Pixel Arcade" title="Install app"><span aria-hidden="true">⇩</span></button>
+          <button class="active-player-button" id="activePlayerButton" aria-label="Switch active player">
+            <span class="tiny-avatar" id="topAvatar" aria-hidden="true"></span><span id="topPlayerName">Player 1</span><span aria-hidden="true">⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="views" id="views">
+        <section class="view is-active" id="homeView" data-view-panel="home" aria-labelledby="homeHeading">
+          <div class="hero-copy"><p class="eyebrow">Ready when you are</p><h2 id="homeHeading">Pick your player.<br><em>Make some magic.</em></h2></div>
+          <section class="profile-strip" aria-label="Player profiles">
+            <button class="profile-card" data-profile="0"><span class="profile-avatar" data-profile-avatar="0" aria-hidden="true"></span><span><small>Player one</small><strong data-profile-name="0">Player 1</strong></span><span class="active-dot" aria-label="Active player"></span></button>
+            <button class="profile-card" data-profile="1"><span class="profile-avatar" data-profile-avatar="1" aria-hidden="true"></span><span><small>Player two</small><strong data-profile-name="1">Player 2</strong></span><span class="active-dot" aria-label="Active player"></span></button>
+            <button class="round-button" id="editProfilesButton" aria-label="Customize player profiles">✎</button>
+          </section>
+
+          <article class="featured-card">
+            <div class="featured-art" aria-hidden="true"><div class="bubble-art bubble-a"></div><div class="bubble-art bubble-b"></div><div class="bubble-art bubble-c"></div><div class="bubble-art bubble-d"></div><div class="spark spark-a">✦</div><div class="spark spark-b">✧</div></div>
+            <div class="featured-content"><span class="status-pill">Featured · Full game</span><p class="game-kicker">Solo · Co-op · Versus</p><h3>Bubble Blast<br><span>Duo</span></h3><p>Pop glossy bubbles, unleash power-ups, and chase medals in 60-second classics or three-round tournaments.</p><button class="primary-button play-button" id="playFeaturedButton">Choose a mode <span aria-hidden="true">▶</span></button></div>
+          </article>
+
+          <div class="section-heading"><div><p class="eyebrow">On the horizon</p><h3>Next adventures</h3></div><span>3 in the works</span></div>
+          <div class="upcoming-grid">
+            <article class="game-card cosmic-card"><div class="game-art cosmic-art" aria-hidden="true"><i></i><i></i><span>✦</span></div><span class="coming-pill">Coming soon</span><p>Co-op flight</p><h4>Cosmic<br>Co-Pilots</h4><button class="ghost-button coming-button" data-coming="Cosmic Co-Pilots">Sneak peek</button></article>
+            <article class="game-card brain-card"><div class="game-art brain-art" aria-hidden="true"><i>?</i><i>!</i></div><span class="coming-pill">Coming soon</span><p>Fast trivia</p><h4>Brain<br>Battle</h4><button class="ghost-button coming-button" data-coming="Brain Battle">Sneak peek</button></article>
+            <article class="game-card temple-card"><div class="game-art temple-art" aria-hidden="true"><i></i><span>◆</span></div><span class="coming-pill">Coming soon</span><p>Puzzle quest</p><h4>Treasure<br>Temple</h4><button class="ghost-button coming-button" data-coming="Treasure Temple">Sneak peek</button></article>
+          </div>
+        </section>
+
+        <section class="view" id="statsView" data-view-panel="stats" aria-labelledby="statsHeading">
+          <div class="page-intro"><p class="eyebrow">Numbers with bragging rights</p><h2 id="statsHeading">Player stats</h2><p>Every pop, combo, and friendly showdown is saved on this device.</p></div>
+          <div class="stats-grid" id="statsGrid"></div>
+          <section class="session-panel"><div class="section-heading compact"><div><p class="eyebrow">Today at the arcade</p><h3>Session pulse</h3></div></div><div class="session-stats" id="sessionStats"></div></section>
+        </section>
+
+        <section class="view" id="trophiesView" data-view-panel="trophies" aria-labelledby="trophiesHeading">
+          <div class="page-intro"><p class="eyebrow">Shared shelf · Earned together</p><h2 id="trophiesHeading">Trophy room</h2><p>Every achievement belongs to the whole arcade team.</p></div>
+          <div class="trophy-progress"><div><strong id="trophyCount">0 / 8</strong><span> trophies unlocked</span></div><div class="progress-track"><i id="trophyProgress"></i></div></div>
+          <div class="trophy-grid" id="trophyGrid"></div>
+        </section>
+
+        <section class="view" id="settingsView" data-view-panel="settings" aria-labelledby="settingsHeading">
+          <div class="page-intro"><p class="eyebrow">Make it yours</p><h2 id="settingsHeading">Settings</h2><p>Comfort, sound, and your progress—all under your control.</p></div>
+          <div class="settings-list">
+            <label class="setting-row"><span><b>Sound effects</b><small>Bubble pops and button sounds</small></span><input type="checkbox" id="soundSetting"><i class="toggle"></i></label>
+            <label class="setting-row"><span><b>Arcade music</b><small>Gentle procedural music during games</small></span><input type="checkbox" id="musicSetting"><i class="toggle"></i></label>
+            <label class="setting-row"><span><b>Gentle haptics</b><small>Short vibration on supported devices</small></span><input type="checkbox" id="hapticsSetting"><i class="toggle"></i></label>
+            <label class="setting-row"><span><b>Reduced motion</b><small>Calmer transitions and effects</small></span><input type="checkbox" id="motionSetting"><i class="toggle"></i></label>
+            <label class="setting-row"><span><b>High contrast</b><small>Stronger borders and visual separation</small></span><input type="checkbox" id="contrastSetting"><i class="toggle"></i></label>
+            <label class="setting-row"><span><b>Extra-large controls</b><small>Bigger buttons and touch targets</small></span><input type="checkbox" id="largeSetting"><i class="toggle"></i></label>
+          </div>
+          <section class="data-card"><div><p class="eyebrow">Your data stays here</p><h3>Progress backup</h3><p>Download a backup to move progress to another browser, or restore one you saved earlier.</p></div><div class="data-actions"><button class="secondary-button" id="exportButton">Export backup</button><button class="secondary-button" id="importButton">Import backup</button><input id="importFile" type="file" accept="application/json" hidden></div></section>
+          <button class="danger-button" id="resetButton">Reset all arcade progress</button><p class="version-label" id="versionLabel">Pixel Arcade v1.0.0 · Offline ready</p>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-button is-active" data-view="home"><span aria-hidden="true">⌂</span><b>Home</b></button><button class="nav-button" data-view="stats"><span aria-hidden="true">▥</span><b>Stats</b></button><button class="nav-button" data-view="trophies"><span aria-hidden="true">♛</span><b>Trophies</b></button><button class="nav-button" data-view="settings"><span aria-hidden="true">⚙</span><b>Settings</b></button>
+      </nav>
+    </div>
+  </div>
+
+  <section class="game-screen" id="gameScreen" hidden aria-label="Bubble Blast Duo game">
+    <div class="game-hud">
+      <div class="hud-player player-one"><span id="gameP1Name">Player 1</span><strong id="gameP1Score">0</strong><i class="multiplier" id="gameP1Multiplier">×1</i></div>
+      <div class="timer-orb"><span id="roundLabel">CLASSIC</span><strong id="gameTimer">60</strong><small id="difficultyLabel">CLASSIC</small></div>
+      <div class="hud-player player-two" id="gameP2Hud"><span id="gameP2Name">Player 2</span><strong id="gameP2Score">0</strong><i class="multiplier" id="gameP2Multiplier">×1</i></div>
+    </div>
+    <div class="power-status power-one" id="powerP1" hidden></div><div class="power-status power-two" id="powerP2" hidden></div>
+    <div class="team-target" id="teamTarget" hidden><span id="teamTargetLabel">TEAM GOAL · 0 / 25</span><i><b id="teamTargetProgress"></b></i></div>
+    <canvas id="gameCanvas" aria-label="Bubble game area. Tap bubbles on your half of the screen."></canvas>
+    <div class="countdown-display" id="countdownDisplay" hidden><span id="countdownKicker">GET READY</span><strong id="countdownValue">3</strong><small id="countdownHint">Tap bubbles on your side</small></div>
+    <div class="game-controls"><button class="game-control" id="exitGameButton">× <span>Exit</span></button><div class="mode-badge" id="gameModeBadge">CO-OP · CLASSIC</div><button class="game-control" id="pauseGameButton">Ⅱ <span>Pause</span></button></div>
+    <div class="pause-card" id="pauseCard" hidden><span class="pause-icon">Ⅱ</span><p class="eyebrow">Breather time</p><h2>Game paused</h2><p>Your bubbles, combo, and timer are frozen.</p><button class="primary-button" id="resumeGameButton">Keep popping</button><button class="secondary-button" id="retryGameButton">Restart match</button><button class="text-button" id="pauseExitButton">Return to arcade</button></div>
+    <div class="pause-card rotate-card" id="rotateCard" hidden><span class="pause-icon">↻</span><p class="eyebrow">Turn the fun sideways</p><h2>Rotate to landscape</h2><p>Landscape keeps both play zones large, fair, and away from system gestures.</p><button class="text-button" id="rotateExitButton">Return to arcade</button></div>
+  </section>
+
+  <div class="update-banner" id="updateBanner" hidden><span>✨ A fresh arcade update is ready.</span><button id="updateButton">Update now</button><button id="dismissUpdate" aria-label="Dismiss update">×</button></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog class="modal" id="modeDialog"><form method="dialog" class="modal-card mode-modal" id="gameSetupForm"><button class="modal-close" value="cancel" aria-label="Close">×</button><div class="modal-icon bubble-modal-icon" aria-hidden="true"><i></i><i></i></div><p class="eyebrow">Bubble Blast Duo</p><h2>Build your match</h2><p>Pop on your own side. Symbols show every power-up—color is never the only clue.</p>
+    <fieldset class="setup-fieldset"><legend>Players</legend><div class="mode-options three-options">
+      <label class="mode-option"><input type="radio" name="gameMode" value="solo"><span>●</span><div><b>Solo</b><small>The active player uses the whole field.</small></div><i>✓</i></label>
+      <label class="mode-option"><input type="radio" name="gameMode" value="coop" checked><span>✦</span><div><b>Team up</b><small>Share goals and earn team rewards.</small></div><i>✓</i></label>
+      <label class="mode-option"><input type="radio" name="gameMode" value="versus"><span>⚡</span><div><b>Versus</b><small>Perfectly mirrored spawns keep it fair.</small></div><i>✓</i></label>
+    </div></fieldset>
+    <div class="setup-row"><fieldset class="setup-fieldset"><legend>Format</legend><div class="choice-chips"><label><input type="radio" name="gameFormat" value="classic" checked><span>60s Classic</span></label><label><input type="radio" name="gameFormat" value="tournament"><span>3-Round Cup</span></label></div></fieldset>
+    <fieldset class="setup-fieldset"><legend>Difficulty</legend><div class="choice-chips"><label><input type="radio" name="gameDifficulty" value="chill"><span>Chill</span></label><label><input type="radio" name="gameDifficulty" value="classic" checked><span>Classic</span></label><label><input type="radio" name="gameDifficulty" value="turbo"><span>Turbo</span></label></div></fieldset></div>
+    <div class="power-legend" aria-label="Power-up guide"><span><i>★</i> Bonus</span><span><i>✹</i> Blast</span><span><i>×2</i> Boost</span><span><i>❄</i> Slow</span></div>
+    <button type="submit" class="primary-button full-button" id="startGameButton">Start match <span aria-hidden="true">▶</span></button><p class="rotate-hint">↻ Gameplay uses landscape. Audio begins only after Start match.</p>
+  </form></dialog>
+
+  <dialog class="modal" id="profileDialog"><form method="dialog" class="modal-card profile-modal" id="profileForm"><button class="modal-close" value="cancel" aria-label="Close">×</button><p class="eyebrow">Make it personal</p><h2>Edit players</h2><div id="profileEditors"></div><button class="primary-button full-button" value="save" id="saveProfilesButton">Save players</button></form></dialog>
+
+  <dialog class="modal" id="infoDialog"><form method="dialog" class="modal-card info-modal"><button class="modal-close" value="close" aria-label="Close">×</button><div class="modal-icon" id="infoIcon" aria-hidden="true">✦</div><p class="eyebrow" id="infoEyebrow">Coming soon</p><h2 id="infoTitle">New adventure</h2><p id="infoText"></p><button class="secondary-button full-button" value="close">Got it</button></form></dialog>
+
+  <dialog class="modal" id="resultDialog"><div class="modal-card result-modal"><div class="confetti" aria-hidden="true"></div><p class="eyebrow" id="resultEyebrow">Match complete</p><div class="result-medal" id="resultMedal" aria-hidden="true">★</div><h2 id="resultTitle">Brilliant popping!</h2><p id="resultSummary"></p><div class="result-scores" id="resultScores"></div><div class="round-recap" id="roundRecap" hidden></div><div class="new-trophies" id="newTrophies"></div><button class="primary-button full-button" id="playAgainButton">Play same match</button><button class="secondary-button full-button" id="changeModeButton">Change mode</button><button class="text-button" id="resultExitButton">Back to arcade</button></div></dialog>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

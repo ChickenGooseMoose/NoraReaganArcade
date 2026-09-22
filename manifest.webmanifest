@@ -1,0 +1,24 @@
+{
+  "id": "./",
+  "name": "Nora & Reagan's Pixel Arcade",
+  "short_name": "Pixel Arcade",
+  "description": "A vibrant offline arcade for two players sharing one phone.",
+  "lang": "en-US",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#08051e",
+  "theme_color": "#100b2f",
+  "orientation": "any",
+  "categories": ["games", "entertainment", "family"],
+  "icons": [
+    { "src": "./assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Play Bubble Blast Duo", "short_name": "Bubble Blast", "description": "Open the arcade to Bubble Blast Duo", "url": "./#home", "icons": [{ "src": "./assets/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Trophy Room", "short_name": "Trophies", "url": "./#trophies", "icons": [{ "src": "./assets/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

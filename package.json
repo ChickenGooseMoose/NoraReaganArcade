@@ -1,0 +1,13 @@
+{
+  "name": "nora-reagan-pixel-arcade",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A dependency-free, offline-first two-player HTML5 arcade.",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "test": "node --test",
+    "check": "node scripts/check-project.mjs",
+    "icons": "node scripts/generate-icons.mjs"
+  }
+}
